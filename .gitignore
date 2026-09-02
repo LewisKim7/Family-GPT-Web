@@ -4,6 +4,6 @@
 node_modules/
 bridge/node_modules/
 bridge/data/
-bridge/.family-profile/
+bridge/.venv-web2api/
 .DS_Store
 *.log
