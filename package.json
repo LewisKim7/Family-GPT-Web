@@ -1,8 +1,10 @@
 {
   "name": "family-gpt-web",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
+  "type": "module",
   "scripts": {
-    "check": "node --check api/_auth.js && node --check api/login.js && node --check api/logout.js && node --check api/chat.js && node --check api/job.js && node --check api/health.js && node --check public/app.js"
-  }
+    "check": "node --check api/_bridge.js && node --check api/chat.js && node --check api/job.js && node --check api/health.js && node --check public/app.js"
+  },
+  "engines": { "node": ">=20" }
 }
