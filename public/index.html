@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Family GPT</title><link rel="stylesheet" href="/style.css"/></head>
+<body><main class="shell">
+<section id="login" class="card login-card"><div class="brand">Family GPT</div><p>가족을 선택하고 PIN으로 로그인하세요.</p><select id="member"><option value="dad">아빠</option><option value="mom">엄마</option><option value="sister">동생</option></select><input id="pin" type="password" inputmode="numeric" placeholder="PIN" autocomplete="current-password"/><button id="loginBtn">로그인</button><p id="loginError" class="error"></p></section>
+<section id="chat" class="chat hidden"><header><div><strong>Family GPT</strong><span id="status" class="status">연결 확인 중</span></div><div class="header-actions"><select id="model"><option value="auto">Auto</option><option value="GPT-5.6 Luna">Luna</option><option value="GPT-5.6 Terra">Terra</option><option value="GPT-5.6 Sol">Sol</option></select><button id="newChat" class="secondary">새 대화</button><button id="logout" class="secondary">잠금</button></div></header><div id="messages" class="messages"></div><form id="composer" class="composer"><textarea id="prompt" rows="2" placeholder="무엇이든 물어보세요"></textarea><button id="send" type="submit">보내기</button></form></section>
+</main><script src="/app.js" type="module"></script></body></html>
