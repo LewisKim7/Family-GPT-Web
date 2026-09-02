@@ -1,0 +1,9 @@
+.env
+.env.*
+!.env.example
+node_modules/
+bridge/node_modules/
+bridge/data/
+bridge/.family-profile/
+.DS_Store
+*.log

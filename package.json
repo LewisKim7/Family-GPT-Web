@@ -1,0 +1,8 @@
+{
+  "name": "family-gpt-web",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "check": "node --check api/_auth.js && node --check api/login.js && node --check api/logout.js && node --check api/chat.js && node --check api/job.js && node --check api/health.js && node --check public/app.js"
+  }
+}
