@@ -1,9 +1,7 @@
 .env
 .env.*
-!.env.example
 node_modules/
-bridge/node_modules/
-bridge/data/
-bridge/.venv-web2api/
+bridge/worker-state.json
+bridge/.venv/
 .DS_Store
 *.log
