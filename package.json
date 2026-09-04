@@ -1,10 +1,11 @@
 {
   "name": "family-gpt-web",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
   "scripts": {
-    "check": "node --check api/_bridge.js && node --check api/chat.js && node --check api/job.js && node --check api/health.js && node --check public/app.js"
+    "check": "node --check lib/runtime.js && node --check api/chat.js && node --check api/job.js && node --check api/health.js && node --check api/worker.js && node --check public/app.js"
   },
-  "engines": { "node": ">=20" }
+  "engines": { "node": ">=20" },
+  "dependencies": { "@vercel/functions": "3.9.5" }
 }
