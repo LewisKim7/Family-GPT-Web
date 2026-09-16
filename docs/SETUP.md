@@ -21,6 +21,21 @@ The generic launcher is `bridge/scripts/start-worker.command`. Its local applica
 
 If macOS blocks a downloaded private `.command` launcher on first run, right-click it and choose **Open**. If the executable bit was stripped during download, run `chmod +x START-FAMILY-GPT.command` once from Terminal.
 
+### Optional Codex mode
+
+GPT Web is the default mode. Codex is only a secondary/fallback mode in the same site.
+
+After the normal Mac worker has been installed, the owner can connect the shared Codex session with:
+
+```bash
+chmod +x bridge/scripts/connect-codex.command
+FAMILY_GPT_WORKER_TOKEN="<private-worker-token>" bridge/scripts/connect-codex.command
+```
+
+The script opens the official Codex device-login page, prints the one-time code, and polls the same `family-gpt-web.vercel.app` project until the session is connected. The browser UI itself cannot create or replace the shared Codex session because the auth mutation requires the private worker bearer token.
+
+After connection, choose **Codex** from the Family GPT sidebar. No second Vercel project or domain is needed.
+
 ## Windows
 
 The generic launcher is `bridge/scripts/start-worker.ps1`. Its local application data lives under `%LOCALAPPDATA%\\Family-GPT-Web`.
