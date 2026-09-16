@@ -2,7 +2,7 @@
   "version": 2,
   "public": true,
   "functions": {
-    "api/*.js": { "maxDuration": 10 }
+    "api/*.js": { "maxDuration": 60 }
   },
   "rewrites": [
     { "source": "/", "destination": "/public/index.html" },
