@@ -60,18 +60,34 @@ if [ -f "$WEB2API_PID" ] && kill -0 "$(cat "$WEB2API_PID")" 2>/dev/null; then
   echo "[Family GPT] ChatGPT-Web2API is already running."
 else
   echo "[Family GPT] Starting ChatGPT-Web2API..."
-  nohup "$WEB2API" start --host 127.0.0.1 --port 8080 >>"$WEB2API_LOG" 2>&1 &
+  nohup "$WEB2API" start --port 8080 --cdp-port 9222 >>"$WEB2API_LOG" 2>&1 &
   echo $! > "$WEB2API_PID"
 fi
 
-sleep 4
+echo "[Family GPT] Waiting for ChatGPT browser engine..."
+for _ in $(seq 1 45); do
+  if curl -fsS http://127.0.0.1:8080/health >/dev/null 2>&1; then
+    break
+  fi
+  sleep 2
+done
+
+if ! curl -fsS http://127.0.0.1:8080/health >/dev/null 2>&1; then
+  echo ""
+  echo "ChatGPT-Web2API did not become ready yet."
+  echo "A Chrome window may be waiting for your ChatGPT login. Complete the normal login, then run this launcher again."
+  echo "Log: $WEB2API_LOG"
+  open "https://chatgpt.com" >/dev/null 2>&1 || true
+  exit 1
+fi
+
 open "$SITE_URL" >/dev/null 2>&1 || true
 
 export FAMILY_GPT_WORKER_TOKEN="$WORKER_TOKEN"
 echo ""
 echo "Family GPT worker is running on this Mac mini."
-echo "A dedicated ChatGPT Chrome window may open. Log into ChatGPT Plus there if requested."
+echo "ChatGPT web engine: http://127.0.0.1:8080"
+echo "Public site: $SITE_URL"
 echo "Keep this Terminal window open while Family GPT should answer questions."
-echo "Site: $SITE_URL"
 echo ""
 exec "$PYTHON" "$WORKER" --site "$SITE_URL"
